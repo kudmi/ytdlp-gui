@@ -46,9 +46,22 @@ Supports YouTube, Bilibili and the thousands of other sites yt-dlp supports.
 ## Requirements
 
 - Windows 10 / 11 (64-bit)
-- Python 3.10 or later (tick "Add python.exe to PATH" during installation)
+- Python 3.10 or later (only needed to run from source; tick "Add python.exe to PATH" during installation)
 
 ## Installation
+
+### Option 1: Download the exe (recommended)
+
+No Python needed.
+
+1. Download the latest `YTDL_GUI-vX.X.X.zip` from [Releases](../../releases/latest).
+2. Extract it to any folder (for example `D:\YTDL`). **Don't** run it from inside the zip.
+3. Open `YTDL_GUI.exe`.
+4. On first use, open "Tools / Settings" on the left and download yt-dlp, ffmpeg and Deno with one click (aria2c is optional).
+
+> Windows may show "Windows protected your PC" because the exe isn't digitally signed. Click "More info → Run anyway".
+
+### Option 2: Run from source
 
 1. Download or clone this repo and open a Command Prompt in its folder.
 2. First run: create a separate Python environment and install the dependencies
@@ -90,6 +103,8 @@ After setting up `.venv` as above, build with PyInstaller (the translations and 
 ```
 
 This produces `dist\YTDL_GUI.exe`. Keep the exe in the same folder as `yt-dlp.exe` and the `fonts` folder.
+
+Pushing a tag that starts with `v` (for example `v2.6.4`) makes GitHub Actions build the exe and create a Release automatically (see `.github/workflows/build.yml`).
 
 ## Project structure
 

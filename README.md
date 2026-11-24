@@ -44,9 +44,22 @@
 ## 系統需求
 
 - Windows 10 / 11（64 位元）
-- Python 3.10 以上（安裝時勾選「Add python.exe to PATH」）
+- Python 3.10 以上（只有從原始碼執行才需要；安裝時勾選「Add python.exe to PATH」）
 
 ## 安裝與執行
+
+### 方法一：直接下載 exe（推薦）
+
+不需要安裝 Python。
+
+1. 到 [Releases](../../releases/latest) 下載最新版的 `YTDL_GUI-vX.X.X.zip`。
+2. 解壓縮到任意資料夾（例如 `D:\YTDL`），**不要**直接在壓縮檔裡執行。
+3. 打開 `YTDL_GUI.exe`。
+4. 第一次使用時，到左側「工具 / 設定」一鍵下載 yt-dlp、ffmpeg、Deno（aria2c 可選）。
+
+> Windows 可能會跳出「Windows 已保護您的電腦」：這是因為 exe 沒有數位簽章，點「其他資訊 → 仍要執行」即可。
+
+### 方法二：從原始碼執行
 
 1. 下載或 clone 這個 repo，在資料夾裡開啟命令提示字元。
 2. 第一次執行：建立獨立的 Python 環境並安裝套件
@@ -88,6 +101,8 @@
 ```
 
 會產生 `dist\YTDL_GUI.exe`。exe 需要和 `yt-dlp.exe`、`fonts` 資料夾放在同一個資料夾。
+
+推送 `v` 開頭的標籤（例如 `v2.6.4`）時，GitHub Actions 會自動打包並建立 Release（見 `.github/workflows/build.yml`）。
 
 ## 專案結構
 

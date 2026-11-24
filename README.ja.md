@@ -46,9 +46,22 @@ YouTube、bilibili をはじめ、yt-dlp が対応する数千のサイトに対
 ## 動作環境
 
 - Windows 10 / 11（64 ビット）
-- Python 3.10 以上（インストール時に「Add python.exe to PATH」にチェック）
+- Python 3.10 以上（ソースコードから実行する場合のみ。インストール時に「Add python.exe to PATH」にチェック）
 
 ## インストールと起動
+
+### 方法 1：exe をダウンロード（おすすめ）
+
+Python のインストールは不要です。
+
+1. [Releases](../../releases/latest) から最新の `YTDL_GUI-vX.X.X.zip` をダウンロードします。
+2. 任意のフォルダー（例：`D:\YTDL`）に展開します。zip の中から直接実行**しないでください**。
+3. `YTDL_GUI.exe` を開きます。
+4. 初回は左側の「ツール / 設定」で yt-dlp、ffmpeg、Deno をワンクリックでダウンロードします（aria2c は任意）。
+
+> 「Windows によって PC が保護されました」と表示されることがあります。exe にデジタル署名がないためです。「詳細情報 → 実行」をクリックしてください。
+
+### 方法 2：ソースコードから実行
 
 1. このリポジトリをダウンロードまたは clone し、そのフォルダーでコマンドプロンプトを開きます。
 2. 初回のみ：専用の Python 環境を作成し、パッケージをインストールします
@@ -90,6 +103,8 @@ YouTube、bilibili をはじめ、yt-dlp が対応する数千のサイトに対
 ```
 
 `dist\YTDL_GUI.exe` が作成されます。exe は `yt-dlp.exe` および `fonts` フォルダーと同じフォルダーに置いてください。
+
+`v` で始まるタグ（例：`v2.6.4`）をプッシュすると、GitHub Actions が自動で exe をビルドして Release を作成します（`.github/workflows/build.yml` を参照）。
 
 ## プロジェクト構成
 
