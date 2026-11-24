@@ -87,25 +87,6 @@ If the app doesn't open or closes immediately, start it with `python` instead of
 
 To switch the interface to English, go to "Tools / Settings › Appearance › Language". The detailed manual, [`使用說明.txt`](使用說明.txt), is in Traditional Chinese only.
 
-## Building a single exe
-
-After setting up `.venv` as above, build with PyInstaller (the translations and Qt's built-in translations are bundled into the exe):
-
-```bat
-.venv\Scripts\pip install pyinstaller
-.venv\Scripts\pyinstaller --noconfirm --clean --windowed --onefile ^
-    --name YTDL_GUI --icon app.ico --workpath build --distpath dist ^
-    --add-data ".venv\Lib\site-packages\PySide6\translations\qtbase_zh_TW.qm;PySide6\translations" ^
-    --add-data ".venv\Lib\site-packages\PySide6\translations\qtbase_zh_CN.qm;PySide6\translations" ^
-    --add-data ".venv\Lib\site-packages\PySide6\translations\qtbase_ja.qm;PySide6\translations" ^
-    --add-data "lang;lang" ^
-    YTDL_GUI.pyw
-```
-
-This produces `dist\YTDL_GUI.exe`. Keep the exe in the same folder as `yt-dlp.exe` and the `fonts` folder.
-
-Pushing a tag that starts with `v` (for example `v2.6.4`) makes GitHub Actions build the exe and create a Release automatically (see `.github/workflows/build.yml`).
-
 ## Project structure
 
 ```

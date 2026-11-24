@@ -85,25 +85,6 @@
 
 詳細操作說明見 [`使用說明.txt`](使用說明.txt)。
 
-## 打包成單一 exe
-
-先照上面建立好 `.venv`，再用 PyInstaller 打包（翻譯檔與 Qt 內建翻譯會一起包進 exe）：
-
-```bat
-.venv\Scripts\pip install pyinstaller
-.venv\Scripts\pyinstaller --noconfirm --clean --windowed --onefile ^
-    --name YTDL_GUI --icon app.ico --workpath build --distpath dist ^
-    --add-data ".venv\Lib\site-packages\PySide6\translations\qtbase_zh_TW.qm;PySide6\translations" ^
-    --add-data ".venv\Lib\site-packages\PySide6\translations\qtbase_zh_CN.qm;PySide6\translations" ^
-    --add-data ".venv\Lib\site-packages\PySide6\translations\qtbase_ja.qm;PySide6\translations" ^
-    --add-data "lang;lang" ^
-    YTDL_GUI.pyw
-```
-
-會產生 `dist\YTDL_GUI.exe`。exe 需要和 `yt-dlp.exe`、`fonts` 資料夾放在同一個資料夾。
-
-推送 `v` 開頭的標籤（例如 `v2.6.4`）時，GitHub Actions 會自動打包並建立 Release（見 `.github/workflows/build.yml`）。
-
 ## 專案結構
 
 ```

@@ -87,25 +87,6 @@ Python のインストールは不要です。
 
 表示言語は「ツール / 設定 › 外観 › 言語 / Language」で日本語に切り替えられます。詳しい使い方の [`使用說明.txt`](使用說明.txt) は繁体字中国語のみです。
 
-## 単一の exe にパッケージ化
-
-上記の手順で `.venv` を作成してから、PyInstaller でパッケージ化します（翻訳ファイルと Qt 内蔵の翻訳も exe に含まれます）：
-
-```bat
-.venv\Scripts\pip install pyinstaller
-.venv\Scripts\pyinstaller --noconfirm --clean --windowed --onefile ^
-    --name YTDL_GUI --icon app.ico --workpath build --distpath dist ^
-    --add-data ".venv\Lib\site-packages\PySide6\translations\qtbase_zh_TW.qm;PySide6\translations" ^
-    --add-data ".venv\Lib\site-packages\PySide6\translations\qtbase_zh_CN.qm;PySide6\translations" ^
-    --add-data ".venv\Lib\site-packages\PySide6\translations\qtbase_ja.qm;PySide6\translations" ^
-    --add-data "lang;lang" ^
-    YTDL_GUI.pyw
-```
-
-`dist\YTDL_GUI.exe` が作成されます。exe は `yt-dlp.exe` および `fonts` フォルダーと同じフォルダーに置いてください。
-
-`v` で始まるタグ（例：`v2.6.4`）をプッシュすると、GitHub Actions が自動で exe をビルドして Release を作成します（`.github/workflows/build.yml` を参照）。
-
 ## プロジェクト構成
 
 ```

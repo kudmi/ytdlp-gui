@@ -87,25 +87,6 @@
 
 界面语言可在「工具 / 设置 › 外观 › 语言 / Language」切换为简体中文。详细操作说明见 [`使用說明.txt`](使用說明.txt)（繁体中文）。
 
-## 打包成单个 exe
-
-先按上面的步骤创建好 `.venv`，再用 PyInstaller 打包（翻译文件与 Qt 内置翻译会一起打包进 exe）：
-
-```bat
-.venv\Scripts\pip install pyinstaller
-.venv\Scripts\pyinstaller --noconfirm --clean --windowed --onefile ^
-    --name YTDL_GUI --icon app.ico --workpath build --distpath dist ^
-    --add-data ".venv\Lib\site-packages\PySide6\translations\qtbase_zh_TW.qm;PySide6\translations" ^
-    --add-data ".venv\Lib\site-packages\PySide6\translations\qtbase_zh_CN.qm;PySide6\translations" ^
-    --add-data ".venv\Lib\site-packages\PySide6\translations\qtbase_ja.qm;PySide6\translations" ^
-    --add-data "lang;lang" ^
-    YTDL_GUI.pyw
-```
-
-会生成 `dist\YTDL_GUI.exe`。exe 需要和 `yt-dlp.exe`、`fonts` 文件夹放在同一个文件夹里。
-
-推送 `v` 开头的标签（例如 `v2.6.4`）时，GitHub Actions 会自动打包并创建 Release（见 `.github/workflows/build.yml`）。
-
 ## 项目结构
 
 ```
