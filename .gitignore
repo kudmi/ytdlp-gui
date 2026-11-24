@@ -1,0 +1,31 @@
+# ===== 個人資料：絕對不要上傳（等同帳號登入狀態 / 個人紀錄）=====
+cookies/
+cookies.txt
+*cookies*.txt
+settings.json
+settings.tmp
+history.db
+error.log
+*.log
+
+# ===== 下載下來的檔案 =====
+Download/
+audio/
+
+# ===== 工具程式與環境（程式內一鍵下載 / 啟動YTDL.bat 自動建立）=====
+tools/
+.venv/
+*.exe
+
+# ===== 打包與暫存 =====
+build/
+dist/
+*.spec
+cache/
+__pycache__/
+*.pyc
+
+# ===== 匯出的設定備份（含 B站登入）與壓縮檔 =====
+*.zip
+*.rar
+*.7z
