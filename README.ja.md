@@ -5,6 +5,8 @@
 [yt-dlp](https://github.com/yt-dlp/yt-dlp) をベースにした Windows 用デスクトップダウンローダーです。PySide6 で作ったサイバーパンク風のインターフェースを備えています。
 YouTube、bilibili をはじめ、yt-dlp が対応する数千のサイトに対応しています。
 
+![ダウンロード画面](docs/screenshots/download.png)
+
 ## 機能
 
 - **ダウンロード**：映像 + 音声 / 音声のみ / 映像のみ。画質、コーデックの優先（H.264 / AV1 / VP9 / HEVC）、コンテナ（mkv / mp4 / webm）を選択可能
@@ -20,6 +22,26 @@ YouTube、bilibili をはじめ、yt-dlp が対応する数千のサイトに対
 - **YouTube**：ブラウザーの Cookie または cookies.txt（メンバー限定・年齢制限のあるコンテンツ）
 - **その他**：ダウンロード履歴、システムトレイ、完了通知、起動時の yt-dlp / aria2c の更新確認、設定のエクスポート / インポート、ダーク / ライトテーマ
 - **多言語対応**：繁體中文 / 简体中文 / English / 日本語。既定では Windows の表示言語に合わせます
+
+## スクリーンショット
+
+> スクリーンショットは繁体字中国語の画面です。表示言語は設定で日本語に切り替えられます。
+
+**ダウンロードキュー：マルチ接続ダウンロードのリアルタイム進行状況**
+
+![ダウンロードキュー](docs/screenshots/queue.png)
+
+**bilibili：現在のアカウントでダウンロードできる画質を表示**
+
+![bilibili](docs/screenshots/bilibili.png)
+
+**音声のみ：MP3 / FLAC などの形式。下にすべての音声ストリームを表示**
+
+![音声のみ](docs/screenshots/audio.png)
+
+**ツール / 設定：ツールのワンクリックダウンロード、マルチ接続、外観と言語**
+
+![ツール / 設定](docs/screenshots/settings.png)
 
 ## 動作環境
 

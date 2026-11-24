@@ -5,6 +5,8 @@
 以 [yt-dlp](https://github.com/yt-dlp/yt-dlp) 为核心的 Windows 桌面下载器，使用 PySide6 制作的 Cyberpunk 风格界面。
 支持 YouTube、Bilibili 以及 yt-dlp 支持的上千个网站。
 
+![下载页](docs/screenshots/download.png)
+
 ## 功能
 
 - **下载**：视频 + 音频 / 仅音频 / 仅视频；可选画质、编码偏好（H.264 / AV1 / VP9 / HEVC）、容器（mkv / mp4 / webm）
@@ -20,6 +22,26 @@
 - **YouTube**：浏览器 Cookie 或 cookies.txt（会员、年龄限制内容）
 - **其他**：下载历史、系统托盘、完成通知、启动时检查 yt-dlp / aria2c 新版本、设置导出 / 导入、深色 / 浅色主题
 - **多语言**：繁體中文 / 简体中文 / English / 日本語，默认跟随 Windows 显示语言
+
+## 截图
+
+> 截图为繁体中文界面，界面语言可在设置中切换为简体中文。
+
+**下载队列：多线程下载的实时进度**
+
+![下载队列](docs/screenshots/queue.png)
+
+**Bilibili：标出每种画质能否下载（按当前账号）**
+
+![Bilibili](docs/screenshots/bilibili.png)
+
+**仅音频：MP3 / FLAC 等格式，下方列出所有音频流**
+
+![仅音频](docs/screenshots/audio.png)
+
+**工具 / 设置：一键下载工具、多线程下载、外观与语言**
+
+![工具 / 设置](docs/screenshots/settings.png)
 
 ## 系统要求
 

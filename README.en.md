@@ -5,6 +5,8 @@
 A Windows desktop downloader built on [yt-dlp](https://github.com/yt-dlp/yt-dlp), with a cyberpunk-style interface made in PySide6.
 Supports YouTube, Bilibili and the thousands of other sites yt-dlp supports.
 
+![Download page](docs/screenshots/download.png)
+
 ## Features
 
 - **Download**: video + audio / audio only / video only; choose quality, preferred codec (H.264 / AV1 / VP9 / HEVC) and container (mkv / mp4 / webm)
@@ -20,6 +22,26 @@ Supports YouTube, Bilibili and the thousands of other sites yt-dlp supports.
 - **YouTube**: browser cookies or cookies.txt (members-only and age-restricted content)
 - **Other**: download history, system tray, completion notifications, update check for yt-dlp / aria2c on startup, settings export / import, dark / light theme
 - **Languages**: 繁體中文 / 简体中文 / English / 日本語, following the Windows display language by default
+
+## Screenshots
+
+> The screenshots show the Traditional Chinese interface; the language can be switched to English in the settings.
+
+**Download queue: live progress of a multi-connection download**
+
+![Download queue](docs/screenshots/queue.png)
+
+**Bilibili: shows which qualities your account can download**
+
+![Bilibili](docs/screenshots/bilibili.png)
+
+**Audio only: MP3 / FLAC and more, with every audio stream listed below**
+
+![Audio only](docs/screenshots/audio.png)
+
+**Tools / Settings: one-click tool downloads, multi-connection downloads, appearance and language**
+
+![Tools / Settings](docs/screenshots/settings.png)
 
 ## Requirements
 
