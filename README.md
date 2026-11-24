@@ -1,9 +1,9 @@
 # YT-DLP Downloader — Cyberpunk Edition
 
+**繁體中文** | [简体中文](README.zh-CN.md) | [English](README.en.md) | [日本語](README.ja.md)
+
 以 [yt-dlp](https://github.com/yt-dlp/yt-dlp) 為核心的 Windows 桌面下載器，PySide6 製作的 Cyberpunk 風格介面。
 支援 YouTube、Bilibili 以及 yt-dlp 支援的上千個網站。
-
-A Windows desktop GUI for yt-dlp (PySide6). UI available in 繁體中文 / 简体中文 / English / 日本語.
 
 ## 功能
 
