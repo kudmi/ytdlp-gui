@@ -1,0 +1,77 @@
+# 自動打包 YTDL_GUI.exe
+# - 推送 v 開頭的標籤（例如 v2.6.4）：打包並建立 GitHub Release，附上 zip
+# - 在 Actions 頁面手動執行（Run workflow）：只打包，zip 放在該次執行的 Artifacts 供下載測試
+name: Build exe
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: 安裝套件
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
+
+      - name: 檢查版本號
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          $tag = "${{ github.ref_name }}".TrimStart("v")
+          $m = Select-String -Path ytdl_core.py -Pattern 'APP_VERSION\s*=\s*"([^"]+)"'
+          $ver = $m.Matches[0].Groups[1].Value
+          if ($ver -ne $tag) {
+            Write-Error "標籤 v$tag 和 ytdl_core.py 的 APP_VERSION ($ver) 不一致"
+            exit 1
+          }
+
+      - name: 打包 exe
+        run: |
+          $qt = python -c "import PySide6, os; print(os.path.join(os.path.dirname(PySide6.__file__), 'translations'))"
+          pyinstaller --noconfirm --clean --windowed --onefile `
+            --name YTDL_GUI --icon app.ico --workpath build --distpath dist `
+            --add-data "$qt\qtbase_zh_TW.qm;PySide6\translations" `
+            --add-data "$qt\qtbase_zh_CN.qm;PySide6\translations" `
+            --add-data "$qt\qtbase_ja.qm;PySide6\translations" `
+            --add-data "lang;lang" `
+            YTDL_GUI.pyw
+
+      - name: 組合發布資料夾
+        run: |
+          $name = if ("${{ github.ref_type }}" -eq "tag") { "YTDL_GUI-${{ github.ref_name }}" } else { "YTDL_GUI-dev" }
+          New-Item -ItemType Directory -Force "release\YTDL_GUI" | Out-Null
+          Copy-Item dist\YTDL_GUI.exe release\YTDL_GUI\
+          Copy-Item -Recurse fonts, yt_dlp_plugins release\YTDL_GUI\
+          Copy-Item 使用說明.txt, LICENSE release\YTDL_GUI\
+          Get-ChildItem release\YTDL_GUI -Recurse -Directory -Filter __pycache__ | Remove-Item -Recurse -Force
+          Compress-Archive -Path release\YTDL_GUI -DestinationPath "release\$name.zip"
+          "ZIP_NAME=$name" | Out-File -Append $env:GITHUB_ENV
+
+      - name: 上傳 Artifact（手動執行時下載測試用）
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.ZIP_NAME }}
+          path: release/${{ env.ZIP_NAME }}.zip
+
+      - name: 建立 Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release/${{ env.ZIP_NAME }}.zip
+          generate_release_notes: true
